@@ -1,8 +1,10 @@
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
+import { compareAsc, format } from "date-fns";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 
+const APIkey = process.env.REACT_APP_API_KEY;
 function WeatherCard() {
   const [weatherCards, createCards] = useState({
     date: "",
@@ -15,17 +17,19 @@ function WeatherCard() {
   });
   const fetchWeather = async () => {
     let response = await fetch(
-      "https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=daily&appid=071b215412d0eab5fef2a63c265b5f06"
+      `https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&exclude=daily,alerts&appid=${APIkey}`
     );
     let jsonResponse = await response.json();
+    console.log(jsonResponse);
+
     createCards({
       date: jsonResponse.dt,
       dayOfWeek: "Tuesday",
       picture: "",
       description: "all is fine",
-      tempMax: jsonResponse.temp,
-      tempMin: jsonResponse.temp,
-      windSpeed: jsonResponse.wind_speed,
+      tempMax: jsonResponse.main.temp_max,
+      tempMin: jsonResponse.main.temp_min,
+      windSpeed: jsonResponse.wind.speed,
     });
   };
 
