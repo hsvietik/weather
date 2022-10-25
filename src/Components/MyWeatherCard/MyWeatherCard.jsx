@@ -1,6 +1,5 @@
 // import axios from "axios";
 import React from "react";
-import { compareAsc, format } from "date-fns";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 
@@ -22,9 +21,30 @@ function WeatherCard() {
     let jsonResponse = await response.json();
     console.log(jsonResponse);
 
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    let unixTimestamp = jsonResponse.dt;
+    let jsdate = new Date(unixTimestamp * 1000);
+    const nameDay = days[jsdate.getDay(jsdate)];
+    const month = months[jsdate.getMonth(jsdate)];
+    const date = jsdate.getDate(jsdate);
+
     createCards({
-      date: jsonResponse.dt,
-      dayOfWeek: "Tuesday",
+      date: date + " " + month,
+      dayOfWeek: nameDay,
       picture: "",
       description: "all is fine",
       tempMax: jsonResponse.main.temp_max,

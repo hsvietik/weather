@@ -1,5 +1,5 @@
-import Header from "./Components/Header/Header.jsx";
-import WeatherCard from "./Components/WeatherCard/WeatherCard.jsx";
+import Header from "./Components/MyHeader/MyHeader.jsx";
+import WeatherCard from "./Components/MyWeatherCard/MyWeatherCard.jsx";
 import "./App.css";
 // import { useState, useEffect } from "react";
 
