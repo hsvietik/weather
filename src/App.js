@@ -3,8 +3,8 @@ import WeatherCard from "./Components/WeatherCard/WeatherCard.jsx";
 import "./App.css";
 import { useState, useEffect } from "react";
 
-const APIkey = process.env.REACT_APP_API_KEY;
-
+// const APIkey = process.env.REACT_APP_API_KEY;
+const APIkey = "36bb9b9ffb520897cd6e2807df71c187";
 function App() {
   const [location, setLocation] = useState({
     lat: 53.38,
@@ -111,7 +111,6 @@ function App() {
 
   useEffect(() => {
     fetchWeather();
-    // handleLocation();
   }, []);
 
   return (
