@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "./Myheader.scss";
+import "./Header.scss";
 
 function Header() {
   return (
@@ -14,14 +14,21 @@ function Header() {
           <Form.Group className="mb-3">
             <Form.Label>select city</Form.Label>
             <Form.Select>
-              <option>London</option>
-              <option>Sheffield</option>
-              <option>Manchester</option>
+              <option id="sheffield" value="sheffield">
+                Sheffield
+              </option>
+              <option id="london" value="london">
+                London
+              </option>
+              <option id="manchester" value="manchester">
+                Manchester
+              </option>
             </Form.Select>
           </Form.Group>
         </Form>
-        <Button variant="primary">5 days forecast</Button>
-        <Button variant="primary">7 days forecast</Button>
+        <Button className="btn" variant="primary">
+          5 days forecast
+        </Button>
       </Container>
     </Navbar>
   );
